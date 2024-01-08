@@ -54,7 +54,7 @@ func main() {
 				panic(err)
 			}
 			if workspace.Locked {
-				_, err := client.Workspaces.Unlock(ctx, workspace.Name)
+				_, err := client.Workspaces.Unlock(ctx, workspace.ID)
 				if err != nil {
 					log.Default().Fatal("Cannot unlock ", workspace.Name)
 				}
@@ -68,7 +68,7 @@ func main() {
 		terraformWorkspaces := getAllWorkspaces(*client, ctx, 25)
 		for _, workspace := range terraformWorkspaces {
 			if workspace.Locked {
-				_, err := client.Workspaces.Unlock(ctx, workspace.Name)
+				_, err := client.Workspaces.Unlock(ctx, workspace.ID)
 				if err != nil {
 					log.Default().Fatal("Cannot unlock ", workspace.Name)
 				}
